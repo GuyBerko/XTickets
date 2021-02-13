@@ -14,6 +14,7 @@ const app = express();
 // Setup proxy trust
 app.set('trust proxy', true);
 
+// Add json parsing and session cookies
 app.use(json());
 app.use(
   cookieSession({
