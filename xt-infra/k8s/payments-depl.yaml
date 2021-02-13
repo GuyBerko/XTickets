@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-payments
+  template:
+    metadata:
+      labels:
+        app: xt-payments
+    spec:
+      containers:
+        - name: xt-payments
+          image: guyberko/xt-payments
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: STRIPE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-secret
+                  key: STRIPE_KEY
+            - name: MONGO_URI
+              value: 'mongodb://payments-mongo-srv:27017/xt-payments'
+            - name: PORT
+              value: '3000'
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: 'xtickets'
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-srv
+spec:
+  selector:
+    app: xt-payments
+  ports:
+    - name: xt-payments
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

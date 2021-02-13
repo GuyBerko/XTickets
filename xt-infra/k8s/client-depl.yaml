@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-client
+  template:
+    metadata:
+      labels:
+        app: xt-client
+    spec:
+      containers:
+        - name: xt-client
+          image: guyberko/xt-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-srv
+spec:
+  selector:
+    app: xt-client
+  ports:
+    - name: xt-client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

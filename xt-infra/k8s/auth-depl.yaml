@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-auth
+  template:
+    metadata:
+      labels:
+        app: xt-auth
+    spec:
+      containers:
+        - name: xt-auth
+          image: guyberko/xt-auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: MONGO_URI
+              value: 'mongodb://auth-mongo-srv:27017/xt-auth'
+            - name: PORT
+              value: '3000'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-srv
+spec:
+  selector:
+    app: xt-auth
+  ports:
+    - name: xt-auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

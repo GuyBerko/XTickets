@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-payments-mongo
+  template:
+    metadata:
+      labels:
+        app: xt-payments-mongo
+    spec:
+      containers:
+        - name: xt-payments-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-mongo-srv
+spec:
+  selector:
+    app: xt-payments-mongo
+  ports:
+    - name: mongo-db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
