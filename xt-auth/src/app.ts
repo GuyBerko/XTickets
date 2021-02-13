@@ -12,6 +12,7 @@ import { signoutRouter } from './routes/signout';
 const app = express();
 
 app.set('trust proxy', true);
+
 app.use(json());
 app.use(
   cookieSession({

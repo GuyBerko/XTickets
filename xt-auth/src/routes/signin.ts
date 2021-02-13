@@ -20,7 +20,7 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (!existingUser) {
-      throw new BadRequestError('Invalid credentials');
+      throw new BadRequestError('[Signin Route] - Invalid credentials');
     }
 
     const passwordValid = await PasswordManager.compare(
@@ -29,7 +29,7 @@ router.post(
     );
 
     if (!passwordValid) {
-      throw new BadRequestError('Invalid credentials');
+      throw new BadRequestError('[Signin Route] - Invalid credentials');
     }
 
     // Generate JWT and store it in the session
