@@ -33,7 +33,7 @@ router.post(
     // Make sure that this ticket is not already reserved
     const isReserved = await ticket.isReserved();
     if (isReserved) {
-      throw new BadRequestError('Ticket is reserved');
+      throw new BadRequestError('[Create-Route] - Ticket is reserved');
     }
 
     // Calculate an expiration date for this order
