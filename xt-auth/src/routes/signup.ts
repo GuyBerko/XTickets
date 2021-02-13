@@ -22,7 +22,7 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new BadRequestError('Email or Password invalid');
+      throw new BadRequestError('[Signup Route] - Email or Password invalid');
     }
 
     const user = User.build({ email, password });
