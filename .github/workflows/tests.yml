@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && npm i && npm run test:ci
+      - run: cd xt-auth && npm i && npm run test:ci
     
