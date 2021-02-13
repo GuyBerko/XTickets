@@ -1,7 +1,9 @@
 name: Tests-Payments
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'xt-payments/**'
 
 jobs:
   build:

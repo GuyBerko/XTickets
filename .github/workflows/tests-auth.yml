@@ -1,7 +1,9 @@
 name: Tests-Auth
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'xt-auth/**'
 
 jobs:
   build:
@@ -9,4 +11,3 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd xt-auth && npm i && npm run test:ci
-    

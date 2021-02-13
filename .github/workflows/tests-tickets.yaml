@@ -1,7 +1,9 @@
 name: Tests-Tickets
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'xt-tickets/**'
 
 jobs:
   build:

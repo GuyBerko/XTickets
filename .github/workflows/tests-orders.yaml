@@ -1,7 +1,9 @@
 name: Tests-Orders
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'xt-orders/**'
 
 jobs:
   build:
