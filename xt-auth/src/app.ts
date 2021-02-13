@@ -11,6 +11,7 @@ import { signoutRouter } from './routes/signout';
 
 const app = express();
 
+// Setup proxy trust
 app.set('trust proxy', true);
 
 app.use(json());
