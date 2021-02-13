@@ -16,7 +16,6 @@ class NatsClient {
 
     return new Promise((res, rej) => {
       this.client.on('connect', () => {
-        console.log('Connected to Nats');
         res('Connected to Nats');
       });
       this.client.on('error', (err) => {
