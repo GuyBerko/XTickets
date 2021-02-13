@@ -26,7 +26,7 @@ app.use([currentUserRouter, signinRouter, signupRouter, signoutRouter]);
 
 // Setup Error middlewares
 app.all('*', () => {
-  throw new NotFoundError();
+  throw new NotFoundError('Error Not Found');
 });
 app.use(errorHandler);
 
