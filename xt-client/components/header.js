@@ -10,11 +10,12 @@ const Header = ({ currentUser }) => {
       <Link href="/">
         <a className="navbar-brand">Home</a>
       </Link>
-      <div className="d-flex justify-content-center">
-        <span className="navbar-text">
-          Hello { currentUser.email }
-        </span>
-      </div>
+      { currentUser &&
+        <div className="d-flex justify-content-center">
+          <span className="navbar-text">
+            Hello { currentUser.email }
+          </span>
+        </div> }
       <div className="d-flex justify-content-end">
         { currentUser ?
           <PostLoginNavbar currentUser={ currentUser } /> :
