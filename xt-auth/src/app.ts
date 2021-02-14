@@ -11,8 +11,10 @@ import { signoutRouter } from './routes/signout';
 
 const app = express();
 
+// Setup proxy trust
 app.set('trust proxy', true);
 
+// Add json parsing and session cookies
 app.use(json());
 app.use(
   cookieSession({
@@ -26,7 +28,7 @@ app.use([currentUserRouter, signinRouter, signupRouter, signoutRouter]);
 
 // Setup Error middlewares
 app.all('*', () => {
-  throw new NotFoundError();
+  throw new NotFoundError('Error Not Found');
 });
 app.use(errorHandler);
 

@@ -20,11 +20,15 @@ router.put(
     const order = await Order.findById(orderId).populate('ticket');
 
     if (!order) {
-      throw new NotFoundError(`Order with id: ${orderId} not found`);
+      throw new NotFoundError(
+        `[Cancel-Route] - Order with id: ${orderId} not found`
+      );
     }
 
     if (order.userId != req.currentUser!.id) {
-      throw new NotAuthorizedError();
+      throw new NotAuthorizedError(
+        `[Cancel-Route] - User with id: ${req.currentUser!.id} not authorized`
+      );
     }
 
     order.set({
