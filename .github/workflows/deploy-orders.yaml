@@ -1,0 +1,25 @@
+name: deploy-orders
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'xt-orders/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd xt-orders && docker build -t guyberko/xt-orders .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker push guyberko/xt-orders
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save xtickets
+      - run: kubectl rollout restart deployment orders-depl
