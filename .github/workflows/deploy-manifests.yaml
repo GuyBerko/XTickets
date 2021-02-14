@@ -16,4 +16,4 @@ jobs:
         with:
           token: ${{ secrets.DGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save xtickets
-      - run: kubectl apply -f xt-infra/k8s
+      - run: kubectl apply -f xt-infra/k8s -f xt-infra/k8s-prod
