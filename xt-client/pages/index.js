@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css';
 import TicketsList from '../components/tickets-list';
 
-const Home = ({ currentUser, tickets }) => {
+const Home = ({ tickets }) => {
   return (
     <div className={ styles.container }>
       <Head>
@@ -20,7 +20,7 @@ const Home = ({ currentUser, tickets }) => {
   )
 };
 
-Home.getInitialProps = async (context, client, currentUser) => {
+Home.getInitialProps = async (context, client) => {
   const { data } = await client.get('/api/tickets');
 
   return { tickets: data };
