@@ -1,18 +1,20 @@
 import mongoose from 'mongoose';
 import { app } from './app';
 
+const envVariables = ['JWT_KEY', 'MONGO_URI'];
+const PORT = process.env.PORT || 3000;
+
 // Server startup
 (async () => {
-  if (!process.env.JWT_KEY) {
-    throw new Error('JWT_KEY must be defined');
-  }
-
-  if (!process.env.MONGO_URI) {
-    throw new Error('MONGO_URI must be defined');
+  // Verify that all env variables are defined
+  for (const envVariable of envVariables) {
+    if (!process.env[envVariable]) {
+      throw new Error(`${envVariable} is not defined`);
+    }
   }
 
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URI!, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
@@ -21,7 +23,7 @@ import { app } from './app';
     console.error(err);
   }
 
-  app.listen(process.env.PORT || 3000, () => {
-    console.log(`Auth listening on ${process.env.PORT || 3000}`);
+  app.listen(PORT, () => {
+    console.log(`Auth listening on ${PORT}`);
   });
 })();
