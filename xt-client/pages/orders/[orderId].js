@@ -46,15 +46,20 @@ const OrderInfo = ({ order, currentUser }) => {
   }
 
   return (
-    <div>
-      <StripeCheckout
-        token={ onPurchase }
-        stripeKey="pk_test_51IIfQXGp7Ot0L3hwbJxwG41dQAatQWDzM5rpygpCjUCmLDWs7u4HWv7rK770Fjn0sjp4BJ160l8kyrov2s22fXfT00Vj3VzPxm"
-        amount={ order.ticket.price * 100 }
-        email={ currentUser.email }
-      />
-      { timeLeft }
-    </div>
+    <>
+      <Head>
+        <title>XTickets - Order Info</title>
+      </Head>
+      <div>
+        <StripeCheckout
+          token={ onPurchase }
+          stripeKey="pk_test_51IIfQXGp7Ot0L3hwbJxwG41dQAatQWDzM5rpygpCjUCmLDWs7u4HWv7rK770Fjn0sjp4BJ160l8kyrov2s22fXfT00Vj3VzPxm"
+          amount={ order.ticket.price * 100 }
+          email={ currentUser.email }
+        />
+        { timeLeft }
+      </div>
+    </>
   )
 }
 

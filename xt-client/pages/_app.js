@@ -1,15 +1,18 @@
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import buildClient from '../api/build-client';
 import Header from '../components/header';
+import Footer from '../components/footer';
+import { Container } from 'reactstrap';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
     <div>
       <Header currentUser={ currentUser } />
-      <div className="container">
+      <Container>
         <Component { ...pageProps } currentUser={ currentUser } />
-      </div>
+      </Container>
+      <Footer />
     </div>
   );
 }

@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 
 const OrdersList = ({ orders }) => {
   return (
-    <ul>
-      {orders.map(order => (
-        <li key={ order.id }>{ order.ticket.title } - { order.status }</li>
-      )) }
-    </ul>
+    <>
+      <Head>
+        <title>XTickets - My Orders</title>
+      </Head>
+      <ul>
+        { orders.map(order => (
+          <li key={ order.id }>{ order.ticket.title } - { order.status }</li>
+        )) }
+      </ul>
+    </>
   )
 }
 

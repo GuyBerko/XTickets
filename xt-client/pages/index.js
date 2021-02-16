@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css';
-import TicketsList from '../components/tickets-list';
+import TicketsCarousel from '../components/tickets-carousel';
 
 const Home = ({ tickets }) => {
   return (
@@ -11,11 +11,8 @@ const Home = ({ tickets }) => {
       </Head>
 
       <main className={ styles.main }>
-        <TicketsList tickets={ tickets } />
+        <TicketsCarousel tickets={ tickets } category="Concerts" />
       </main>
-
-      <footer className={ styles.footer }>
-      </footer>
     </div>
   )
 };
