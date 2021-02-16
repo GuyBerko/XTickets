@@ -5,9 +5,6 @@ const envVariables = ['NATS_CLUSTER_ID', 'NATS_URL', 'NATS_CLIENT_ID'];
 
 // Server startup
 (async () => {
-  // TODO: rm log
-  console.log('Starting up expiration service');
-
   // Verify that all env variables are defined
   for (const envVariable of envVariables) {
     if (!process.env[envVariable]) {

@@ -17,9 +17,6 @@ const envVariables = [
 
 // Server startup
 (async () => {
-  // TODO: rm log
-  console.log('Starting up tickets service');
-
   // Verify that all env variables are defined
   for (const envVariable of envVariables) {
     if (!process.env[envVariable]) {

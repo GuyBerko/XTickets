@@ -3,9 +3,6 @@ import { app } from './app';
 
 // Server startup
 (async () => {
-  // TODO: rm log
-  console.log('Starting up auth service');
-
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
