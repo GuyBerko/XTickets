@@ -2,6 +2,7 @@ import {
   OrderCreatedEvent,
   OrderCancelledEvent,
   OrderStatus,
+  TicketCategory,
 } from '@gb-xtickets/common';
 import mongoose from 'mongoose';
 import { OrderCreatedListener, OrderCancelledListener } from '../listeners';
@@ -20,6 +21,10 @@ describe('Listeners', () => {
         title: 'concert',
         price: 99,
         userId: 'abc123',
+        description: 'desc',
+        category: TicketCategory.Comedy,
+        image: '',
+        date: new Date(),
       });
       await ticket.save();
 
@@ -102,6 +107,8 @@ describe('Listeners', () => {
         userId: ticket.userId,
         orderId: data.id,
         version: ticket.version + 1,
+        category: ticket.category,
+        date: ticket.date,
       });
 
       // Cheack that the event type was ticket updated event
@@ -124,6 +131,10 @@ describe('Listeners', () => {
         title: 'concert',
         price: 99,
         userId: 'abc123',
+        description: 'desc',
+        category: TicketCategory.Comedy,
+        image: '',
+        date: new Date(),
       });
       ticket.set({ orderId });
       await ticket.save();
@@ -203,6 +214,8 @@ describe('Listeners', () => {
         userId: ticket.userId,
         orderId: undefined,
         version: ticket.version + 1,
+        category: ticket.category,
+        date: ticket.date,
       });
 
       // Cheack that the event type was ticket updated event
