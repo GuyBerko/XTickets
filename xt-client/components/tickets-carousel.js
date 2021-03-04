@@ -8,7 +8,8 @@ import {
   CarouselIndicators
 } from 'reactstrap';
 import styles from '../styles/TicketsCarousel.module.scss';
-import { Container, Row, Col } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 const TicketsCarousel = ({ tickets, category }) => {
   const [numCardsInRow, setnumCardsInRow] = useState(5);
@@ -88,8 +89,8 @@ const TicketsCarousel = ({ tickets, category }) => {
       >
         <CarouselIndicators items={ items } activeIndex={ activeIndex } onClickHandler={ goToIndex } />
         { items }
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={ previous } />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={ next } />
+        <div className={ [styles.CarouselIndicators, styles.RightIndicator].join(' ') } onClick={ next }><FontAwesomeIcon width="20px" fixedWidth icon={ faChevronRight } /></div>
+        <div className={ [styles.CarouselIndicators, styles.LeftIndicator].join(' ') } onClick={ previous }><FontAwesomeIcon width="20px" fixedWidth icon={ faChevronLeft } /></div>
       </Carousel>
     </div>
   )
