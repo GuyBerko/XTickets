@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Head from 'next/head'
 import StripeCheckout from 'react-stripe-checkout';
 import useRequest from '../../hooks/use-request';
 import Router from 'next/router';
+import { Alert, Container, Row, Col, Table } from 'reactstrap';
+import styles from '../../styles/OrderInfo.module.scss';
 
 const OrderInfo = ({ order, currentUser }) => {
   const [timeLeft, setTimeLeft] = useState('');
@@ -18,9 +21,6 @@ const OrderInfo = ({ order, currentUser }) => {
   useEffect(() => {
     const findTimeLeft = () => {
       const distance = new Date(order.expiresAt) - new Date();
-
-      //const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      //const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -35,14 +35,24 @@ const OrderInfo = ({ order, currentUser }) => {
 
     findTimeLeft();
     const timer = setInterval(findTimeLeft, 1000);
+
+    return () => { clearInterval(timer); }
   }, []);
 
   const onPurchase = (token) => {
     createPayment({ token: token.id });
   };
 
+  if (order.status === 'cancelled') {
+    return <Alert color="dark">This order has been Cancelled!</Alert>
+  }
+
+  if (order.status === 'complete') {
+    return <Alert color="success">This order has been Completed</Alert>
+  }
+
   if (!timeLeft) {
-    return <div className="alert alert-danger" role="alert">Order is EXPIRED</div>
+    return <Alert color="danger">Order is EXPIRED</Alert>
   }
 
   return (
@@ -50,21 +60,55 @@ const OrderInfo = ({ order, currentUser }) => {
       <Head>
         <title>XTickets - Order Info</title>
       </Head>
-      <div>
-        <StripeCheckout
-          token={ onPurchase }
-          stripeKey="pk_test_51IIfQXGp7Ot0L3hwbJxwG41dQAatQWDzM5rpygpCjUCmLDWs7u4HWv7rK770Fjn0sjp4BJ160l8kyrov2s22fXfT00Vj3VzPxm"
-          amount={ order.ticket.price * 100 }
-          email={ currentUser.email }
-        />
-        { timeLeft }
-      </div>
+      <Container>
+        <div className={ styles.Wrapper }>
+          <Row>
+            <Alert color="info">{ timeLeft }</Alert>
+          </Row>
+          <Row className={ styles.PaymentRow }>
+            <Col sm="auto">
+              <Table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{ order.ticket.title }</td>
+                    <td>{ order.ticket.date }</td>
+                    <td>{ order.quantity }</td>
+                    <td>{ order.ticket.price } $</td>
+                    <td>{ (order.ticket.price * order.quantity).toFixed(2) } $</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+            <Col sm="auto">
+              <StripeCheckout
+                token={ onPurchase }
+                stripeKey="pk_test_51IIfQXGp7Ot0L3hwbJxwG41dQAatQWDzM5rpygpCjUCmLDWs7u4HWv7rK770Fjn0sjp4BJ160l8kyrov2s22fXfT00Vj3VzPxm"
+                amount={ (order.ticket.price * order.quantity).toFixed(2) * 100 }
+                email={ currentUser.email }
+              />
+            </Col>
+          </Row>
+        </div>
+      </Container>
+      {errors && (<Alert color="danger">{ errors }</Alert>) }
     </>
   )
 }
 
 OrderInfo.propTypes = {
-
+  order: PropTypes.object.isRequired,
+  currentUser: PropTypes.object.isRequired
 }
 
 OrderInfo.getInitialProps = async (context, client) => {
