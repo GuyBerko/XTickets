@@ -22,6 +22,10 @@ spec:
             backend:
               serviceName: tickets-srv
               servicePort: 3000
+          - path: /api/categories/?(.*)
+            backend:
+              serviceName: tickets-srv
+              servicePort: 3000
           - path: /api/orders/?(.*)
             backend:
               serviceName: orders-srv
