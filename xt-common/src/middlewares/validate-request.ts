@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 import { RequestValidationError } from '../errors/request-validation-error';
 
+/* Validate the body params of the request */
 export const validateRequest = (
   req: Request,
   res: Response,

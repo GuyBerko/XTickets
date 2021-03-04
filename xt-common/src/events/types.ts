@@ -15,3 +15,10 @@ export enum OrderStatus {
   // provided payment successfully
   Complete = 'complete',
 }
+
+export enum TicketCategory {
+  Concerts = 'Concerts',
+  Sports = 'Sports',
+  Theater = 'Theater',
+  Comedy = 'Comedy',
+}
