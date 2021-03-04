@@ -8,6 +8,7 @@ interface TicketAttrs {
   title: string;
   price: number;
   id: string;
+  date: Date;
 }
 
 // An interface that describe the properties
@@ -26,6 +27,7 @@ export interface TicketDoc extends mongoose.Document {
   title: string;
   price: number;
   version: number;
+  date: Date;
   isReserved(): Promise<boolean>;
 }
 
@@ -37,6 +39,10 @@ const ticketSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
+      required: true,
+    },
+    date: {
+      type: mongoose.Schema.Types.Date,
       required: true,
     },
   },
@@ -56,8 +62,7 @@ ticketSchema.plugin(updateIfCurrentPlugin);
 ticketSchema.statics.build = (attrs: TicketAttrs) =>
   new Ticket({
     _id: attrs.id,
-    title: attrs.title,
-    price: attrs.price,
+    ...attrs,
   });
 
 ticketSchema.statics.findByEvent = (event: { id: string; version: number }) => {

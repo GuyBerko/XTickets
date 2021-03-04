@@ -71,7 +71,7 @@ describe('Cancel Route', () => {
 
     const order = await Order.findById(orderId);
     expect(order).not.toEqual(null);
-    expect(order!.status).toEqual(OrderStatus.Created);
+    expect(order!.status).toEqual(OrderStatus.AwaitingPayment);
 
     await request(app)
       .put(`/api/orders/${orderId}`)

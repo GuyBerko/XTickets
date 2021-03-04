@@ -88,7 +88,7 @@ describe('Create Order Route', () => {
       .expect(201);
 
     expect(result.body.ticket.id).toEqual(ticket.id);
-    expect(result.body.status).toEqual(OrderStatus.Created);
+    expect(result.body.status).toEqual(OrderStatus.AwaitingPayment);
     expect(result.body.userId).toEqual(userId);
   });
 

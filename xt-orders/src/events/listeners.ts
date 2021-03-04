@@ -20,11 +20,12 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
   queueGroupName = QUEUE_GROUP_NAME;
 
   async onMessage(data: TicketCreatedEvent['data'], msg: Message) {
-    const { title, price, id } = data;
+    const { title, price, id, date } = data;
     const ticket = Ticket.build({
       id,
       title,
       price,
+      date,
     });
 
     await ticket.save();
@@ -38,7 +39,7 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
   queueGroupName = QUEUE_GROUP_NAME;
 
   async onMessage(data: TicketUpdatedEvent['data'], msg: Message) {
-    const { title, price, id, version } = data;
+    const { title, price, id, version, date } = data;
 
     const ticket = await Ticket.findByEvent({ id, version });
 
@@ -51,6 +52,7 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
     ticket.set({
       title,
       price,
+      date,
     });
     await ticket.save();
 
