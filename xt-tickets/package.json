@@ -20,11 +20,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@gb-xtickets/common": "^1.0.15",
+    "@gb-xtickets/common": "^1.0.23",
     "@types/cookie-session": "^2.0.42",
     "@types/express": "^4.17.8",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.10.3",
+    "axios": "^0.21.1",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
