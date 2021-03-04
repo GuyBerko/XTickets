@@ -22,6 +22,9 @@ describe('Listeners', () => {
         expiresAt: '99-99-9999',
         userId: 'def456',
         status: OrderStatus.Created,
+        quantity: 1,
+        createdAt: new Date(),
+        tax: 0.17,
         ticket: {
           price: 20,
           id: 'ticketId',
@@ -80,6 +83,7 @@ describe('Listeners', () => {
         price: 20,
         userId: 'fakeUserId',
         version: 0,
+        quantity: 1,
       });
       await order.save();
 

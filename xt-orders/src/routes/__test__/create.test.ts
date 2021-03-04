@@ -31,6 +31,19 @@ describe('Create Order Route', () => {
       .set('Cookie', getSignupCookie())
       .send({
         ticketId: '',
+        quantity: 1,
+      })
+      .expect(400);
+  });
+
+  it('should return error if an invalid quantity is provided', async () => {
+    const ticketId = mongoose.Types.ObjectId();
+    return request(app)
+      .post('/api/orders')
+      .set('Cookie', getSignupCookie())
+      .send({
+        ticketId,
+        quantity: undefined,
       })
       .expect(400);
   });
@@ -42,6 +55,7 @@ describe('Create Order Route', () => {
       .set('Cookie', getSignupCookie())
       .send({
         ticketId,
+        quantity: 1,
       })
       .expect(404);
   });
@@ -61,6 +75,7 @@ describe('Create Order Route', () => {
       userId,
       status: OrderStatus.Created,
       expiresAt: expiration,
+      quantity: 1,
     });
     await order.save();
 
@@ -69,6 +84,7 @@ describe('Create Order Route', () => {
       .set('Cookie', getSignupCookie(userId))
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(400);
   });
@@ -84,6 +100,7 @@ describe('Create Order Route', () => {
       .set('Cookie', getSignupCookie(userId))
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 
@@ -103,6 +120,7 @@ describe('Create Order Route', () => {
       .set('Cookie', getSignupCookie(userId))
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 

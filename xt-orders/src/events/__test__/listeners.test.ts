@@ -31,6 +31,7 @@ describe('Listeners', () => {
         price: 10,
         date: new Date(),
         category: TicketCategory.Comedy,
+        description: 'desc',
       };
 
       // Create a fake message object
@@ -90,6 +91,7 @@ describe('Listeners', () => {
         price: 30,
         category: TicketCategory.Comedy,
         date: new Date(),
+        description: 'desc',
       };
 
       // Create a fake message object
@@ -161,6 +163,7 @@ describe('Listeners', () => {
         userId: 'someFakeId',
         expiresAt: new Date(),
         ticket,
+        quantity: 1,
       });
 
       await order.save();

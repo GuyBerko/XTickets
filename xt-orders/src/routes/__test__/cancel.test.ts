@@ -43,6 +43,7 @@ describe('Cancel Route', () => {
       .set('Cookie', userOneCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 
@@ -66,6 +67,7 @@ describe('Cancel Route', () => {
       .set('Cookie', userCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 
@@ -98,6 +100,7 @@ describe('Cancel Route', () => {
       .set('Cookie', userCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 

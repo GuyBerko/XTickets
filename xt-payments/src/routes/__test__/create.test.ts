@@ -1,11 +1,12 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { getSignupCookie } from '../../test/helpers';
-import { Order, OrderStatus } from '../../models/order';
+import { Order } from '../../models/order';
 import mongoose from 'mongoose';
 import { stripe } from '../../stripe';
 import { Payment } from '../../models/payments';
 import { natsClient } from '../../nats-client';
+import { OrderStatus } from '@gb-xtickets/common';
 
 describe('Create Payment Charge Route', () => {
   it('should listen for /api/payments for post requests', async () => {
@@ -65,6 +66,7 @@ describe('Create Payment Charge Route', () => {
       userId: mongoose.Types.ObjectId().toHexString(),
       price: 20,
       version: 1,
+      quantity: 1,
     });
 
     await order.save();
@@ -86,6 +88,7 @@ describe('Create Payment Charge Route', () => {
       userId: mongoose.Types.ObjectId().toHexString(),
       price: 20,
       version: 1,
+      quantity: 1,
     });
 
     await order.save();
@@ -107,6 +110,7 @@ describe('Create Payment Charge Route', () => {
       userId: mongoose.Types.ObjectId().toHexString(),
       price: 20,
       version: 1,
+      quantity: 1,
     });
 
     await order.save();
@@ -135,6 +139,7 @@ describe('Create Payment Charge Route', () => {
       userId: mongoose.Types.ObjectId().toHexString(),
       price: 20,
       version: 1,
+      quantity: 1,
     });
 
     await order.save();
@@ -159,6 +164,7 @@ describe('Create Payment Charge Route', () => {
       userId: mongoose.Types.ObjectId().toHexString(),
       price: 20,
       version: 1,
+      quantity: 1,
     });
 
     await order.save();

@@ -35,6 +35,9 @@ describe('Listeners', () => {
         expiresAt: '99-99-9999',
         userId: 'def456',
         status: OrderStatus.Created,
+        quantity: 1,
+        createdAt: new Date(),
+        tax: 0.17,
         ticket: {
           price: ticket.price,
           id: ticket.id,
@@ -109,6 +112,7 @@ describe('Listeners', () => {
         version: ticket.version + 1,
         category: ticket.category,
         date: ticket.date,
+        description: ticket.description,
       });
 
       // Cheack that the event type was ticket updated event
@@ -216,6 +220,7 @@ describe('Listeners', () => {
         version: ticket.version + 1,
         category: ticket.category,
         date: ticket.date,
+        description: ticket.description,
       });
 
       // Cheack that the event type was ticket updated event
