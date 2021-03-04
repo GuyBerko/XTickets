@@ -15,6 +15,8 @@ beforeAll(async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+
+  console.clear();
 });
 
 afterEach(() => {

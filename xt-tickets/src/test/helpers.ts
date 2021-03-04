@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { app } from '../app';
 import jwt from 'jsonwebtoken';
+import { TicketCategory } from '@gb-xtickets/common';
 
 export const noop = () => {};
 
@@ -31,6 +32,9 @@ export const getSignupCookie = (
 export const createTicket = async (params: {
   title: string;
   price: number;
+  category: TicketCategory;
+  description: string;
+  date: number;
 }) => {
   const response = await request(app)
     .post('/api/tickets')
