@@ -54,7 +54,7 @@ router.post(
     // Create a new charge
     const chargeResponse = await stripe.charges.create({
       currency: 'usd', // TODO: rm hardcoded currency and add it to the ticket/order obj
-      amount: order.price * 100,
+      amount: Math.floor(order.price * order.quantity * 100),
       source: token,
     });
 
