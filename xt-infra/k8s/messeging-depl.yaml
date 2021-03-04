@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messeging-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-messeging
+  template:
+    metadata:
+      labels:
+        app: xt-messeging
+    spec:
+      containers:
+        - name: xt-messeging
+          image: guyberko/xt-messeging
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://messeging-mongo-srv:27017/xt-messeging'
+            - name: REDIS_HOST
+              value: messeging-redis-srv
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: 'xtickets'
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SENDGRID_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sendgrid-api-secret
+                  key: SENDGRID_API_KEY
