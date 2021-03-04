@@ -1,0 +1,58 @@
+.Wrapper {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+.Label {
+  transition: all 0.2s;
+  touch-action: manipulation;
+  color: #707070;
+  font-size: 1.3rem;
+  margin: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.Input {
+  transition: all 0.3s;
+  touch-action: manipulation;
+  font-size: 1.3em;
+  font-family: inherit;
+  height: 50px;
+  padding: 0 10px;
+  cursor: text;
+
+  &:placeholder-shown + label {
+    cursor: text;
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(25px, 50px);
+  }
+
+  &::-webkit-input-placeholder {
+    opacity: 0;
+    transition: inherit;
+  }
+
+  &:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+
+  &:not(:placeholder-shown) + label,
+  &:focus + label {
+    transform: translate(4px, 25px);
+    color: #4d4df5;
+    font-size: 0.8rem;
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #ffffff 53%,
+      transparent 53%
+    );
+    width: fit-content;
+  }
+}

@@ -1,0 +1,23 @@
+.Col {
+  padding: 0;
+}
+
+.Input {
+  width: 50px;
+  text-align: center;
+  border-radius: unset;
+}
+
+.Button {
+  width: 40px;
+
+  &.Left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.Right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

@@ -15,6 +15,7 @@ a {
   box-sizing: border-box;
 }
 
+/** ScrollBar **/
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;
@@ -47,6 +48,18 @@ a {
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+/** Inputs **/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 .carousel-control-prev,
