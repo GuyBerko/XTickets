@@ -2,6 +2,7 @@ import request from 'supertest';
 import { app } from '../../app';
 import { getSignupCookie } from '../../test/helpers';
 import mongoose from 'mongoose';
+import { TicketCategory } from '@gb-xtickets/common';
 
 describe('Get Ticket Route', () => {
   it('should return 404 if the ticket was not found', async () => {
@@ -13,6 +14,9 @@ describe('Get Ticket Route', () => {
     const params = {
       title: 'concert',
       price: 10,
+      description: 'desc',
+      category: TicketCategory.Comedy,
+      date: new Date(),
     };
 
     const response = await request(app)
@@ -28,5 +32,8 @@ describe('Get Ticket Route', () => {
 
     expect(ticketResponse.body.title).toEqual(params.title);
     expect(ticketResponse.body.price).toEqual(params.price);
+    expect(ticketResponse.body.description).toEqual(params.description);
+    expect(ticketResponse.body.category).toEqual(params.category);
+    expect(ticketResponse.body.date).toEqual(params.date.toISOString());
   });
 });

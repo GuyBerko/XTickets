@@ -4,13 +4,23 @@ import { getSignupCookie, createTicket } from '../../test/helpers';
 import mongoose from 'mongoose';
 import { natsClient } from '../../nats-client';
 import { Ticket } from '../../models/ticket';
+import { TicketCategory } from '@gb-xtickets/common';
 
-const setup = ({ title = 'concert', price = 10 } = {}) => ({
+const setup = ({
+  title = 'concert',
+  price = 10,
+  description = 'desc',
+  category = TicketCategory.Comedy,
+  date = new Date().getTime(),
+} = {}) => ({
   title,
   price,
+  description,
+  category,
+  date,
 });
 
-describe('Create Tickets Route', () => {
+describe('Update Tickets Route', () => {
   it('should return 404 if the provided id not exists', async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
     return request(app)
@@ -116,17 +126,19 @@ describe('Create Tickets Route', () => {
   });
 
   it('should publish event', async () => {
+    const response = await createTicket(setup());
+    jest.clearAllMocks(); // Clear the natsClient mock after create ticket
     const params = {
-      title: 'gdfsgsdg',
-      price: 10,
+      title: 'concert',
+      price: 25,
     };
 
     await request(app)
-      .post('/api/tickets')
+      .put(`/api/tickets/${response.body.id}`)
       .set('Cookie', getSignupCookie())
       .send(params)
-      .expect(201);
+      .expect(200);
 
-    expect(natsClient.client.publish).toBeCalled();
+    expect(natsClient.client.publish).toBeCalledTimes(1);
   });
 });
