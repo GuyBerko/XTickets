@@ -1,4 +1,5 @@
 import { Ticket } from '../ticket';
+import { TicketCategory } from '@gb-xtickets/common';
 
 describe('Ticket Model', () => {
   it('should have version control', async () => {
@@ -7,6 +8,10 @@ describe('Ticket Model', () => {
       title: 'concert',
       price: 5,
       userId: '123',
+      description: 'desc',
+      image: '',
+      category: TicketCategory.Comedy,
+      date: new Date(),
     });
 
     // Save the ticket to the database
@@ -37,6 +42,10 @@ describe('Ticket Model', () => {
       title: 'concert',
       price: 5,
       userId: '123',
+      description: 'desc',
+      image: '',
+      category: TicketCategory.Comedy,
+      date: new Date(),
     });
 
     await ticket.save();
