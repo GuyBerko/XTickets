@@ -8,4 +8,7 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  images: {
+    domains: ['storage.googleapis.com'],
+  },
 };
