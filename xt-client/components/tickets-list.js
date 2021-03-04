@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from '../styles/TicketsList.module.scss';
 import {
   Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
+  CardTitle, CardSubtitle,
 } from 'reactstrap';
 
 const TicketsList = ({ tickets }) => {
@@ -16,6 +16,7 @@ const TicketsList = ({ tickets }) => {
           <CardBody>
             <CardTitle tag="h5">{ ticket.title }</CardTitle>
             <CardSubtitle tag="h6" className="mb-2 text-muted">{ ticket.price } $</CardSubtitle>
+            <CardText>{ ticket.description }</CardText>
           </CardBody>
         </Card>
       </a>
