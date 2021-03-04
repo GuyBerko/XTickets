@@ -8,6 +8,7 @@ describe('SignUp Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(201);
   });
@@ -18,6 +19,7 @@ describe('SignUp Route', () => {
       .send({
         email: 'aUnValidEmail',
         password: 'password',
+        name: 'testname',
       })
       .expect(400);
   });
@@ -28,6 +30,7 @@ describe('SignUp Route', () => {
       .send({
         email: 'test@test.com',
         password: 'p',
+        name: 'testname',
       })
       .expect(400);
   });
@@ -37,6 +40,7 @@ describe('SignUp Route', () => {
       .post('/api/users/signup')
       .send({
         email: 'test@test.com',
+        name: 'testname',
       })
       .expect(400);
 
@@ -44,6 +48,7 @@ describe('SignUp Route', () => {
       .post('/api/users/signup')
       .send({
         password: 'p123456',
+        name: 'testname',
       })
       .expect(400);
   });
@@ -54,6 +59,7 @@ describe('SignUp Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(201);
 
@@ -62,6 +68,7 @@ describe('SignUp Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(400);
   });
@@ -72,6 +79,7 @@ describe('SignUp Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(201);
 

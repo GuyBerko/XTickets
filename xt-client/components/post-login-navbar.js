@@ -4,6 +4,8 @@ import Router from 'next/router';
 import { postLoginMenu } from '../utils/menu';
 import useRequest from '../hooks/use-request';
 import MenuItem from './menu-item';
+import styles from '../styles/NavBar.module.scss';
+import { NavItem } from 'reactstrap';
 
 const PostLoginNavbar = () => {
   const [onLogout] = useRequest({
@@ -14,14 +16,16 @@ const PostLoginNavbar = () => {
   });
 
   return (
-    <ul className="nav d-flex align-items-center">
+    <>
       { postLoginMenu.map((item, index) => (
-        <MenuItem item={ item } key={ `menu-item-${index}` } />
+        <NavItem className={ styles.NavItem } key={ `menu-item-${index}` } >
+          <MenuItem item={ item } />
+        </NavItem>
       )) }
-      <li className="nav-item active">
-        <button className="btn btn-link" onClick={ () => onLogout() }>Log Out</button>
-      </li>
-    </ul>
+      <NavItem className={ styles.NavItem }>
+        <a href="#" className="nav-link" onClick={ () => onLogout() }>Log Out</a>
+      </NavItem>
+    </>
   )
 }
 

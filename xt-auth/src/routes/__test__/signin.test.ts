@@ -8,6 +8,7 @@ describe('SignIn Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(201);
 
@@ -72,6 +73,7 @@ describe('SignIn Route', () => {
       .send({
         email: 'test@test.com',
         password: 'p123456',
+        name: 'testname',
       })
       .expect(201);
 
@@ -90,6 +92,7 @@ describe('SignIn Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(201);
 

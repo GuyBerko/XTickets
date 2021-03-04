@@ -1,0 +1,51 @@
+{
+  "title": "Create a Ticket",
+  "submitText": "Save",
+  "fields": [
+    {
+      "name": "category",
+      "initialValue": "",
+      "type": "select",
+      "id": "categoryField",
+      "label": "Category",
+      "options": [
+        {
+          "label": "Choose event category",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "title",
+      "initialValue": "",
+      "type": "text",
+      "id": "titleField",
+      "placeholder": "Ticket Title",
+      "label": "Title"
+    },
+    {
+      "name": "description",
+      "initialValue": "",
+      "type": "textarea",
+      "id": "descriptionField",
+      "placeholder": "The ticket description",
+      "label": "Description"
+    },
+    {
+      "name": "price",
+      "initialValue": "",
+      "type": "number",
+      "id": "priceField",
+      "placeholder": "Ticket Price",
+      "label": "Price"
+    },
+    {
+      "name": "date",
+      "initialValue": "",
+      "type": "date",
+      "id": "dateField",
+      "placeholder": "Event date",
+      "label": "Event date"
+    }
+  ]
+}

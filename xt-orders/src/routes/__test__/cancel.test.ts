@@ -43,6 +43,7 @@ describe('Cancel Route', () => {
       .set('Cookie', userOneCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 
@@ -66,12 +67,13 @@ describe('Cancel Route', () => {
       .set('Cookie', userCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 
     const order = await Order.findById(orderId);
     expect(order).not.toEqual(null);
-    expect(order!.status).toEqual(OrderStatus.Created);
+    expect(order!.status).toEqual(OrderStatus.AwaitingPayment);
 
     await request(app)
       .put(`/api/orders/${orderId}`)
@@ -98,6 +100,7 @@ describe('Cancel Route', () => {
       .set('Cookie', userCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 

@@ -10,6 +10,7 @@ interface OrderAttrs {
   expiresAt: Date;
   userId: string;
   ticket: TicketDoc;
+  quantity: number;
 }
 
 // An interface that describe the properties
@@ -26,6 +27,9 @@ interface OrderDoc extends mongoose.Document {
   userId: string;
   ticket: TicketDoc;
   version: number;
+  createdAt: Date;
+  tax: number;
+  quantity: number;
 }
 
 const orderSchema = new mongoose.Schema(
@@ -47,6 +51,14 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Ticket',
     },
+    quantity: {
+      type: Number,
+      default: 1,
+    },
+    tax: {
+      type: Number,
+      default: 0.17,
+    },
   },
   {
     toJSON: {
@@ -59,6 +71,7 @@ const orderSchema = new mongoose.Schema(
 );
 
 orderSchema.set('versionKey', 'version');
+orderSchema.set('timestamps', true);
 orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attrs: OrderAttrs) => new Order(attrs);

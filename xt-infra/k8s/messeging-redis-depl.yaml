@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messeging-redis-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-messeging-redis
+  template:
+    metadata:
+      labels:
+        app: xt-messeging-redis
+    spec:
+      containers:
+        - name: xt-messeging-redis
+          image: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: messeging-redis-srv
+spec:
+  selector:
+    app: xt-messeging-redis
+  ports:
+    - name: redis-db
+      protocol: TCP
+      port: 6379
+      targetPort: 6379

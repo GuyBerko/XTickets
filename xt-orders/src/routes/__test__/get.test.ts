@@ -41,6 +41,7 @@ describe('Get Route', () => {
       .set('Cookie', userOneCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 
@@ -65,6 +66,7 @@ describe('Get Route', () => {
       .set('Cookie', userCookie)
       .send({
         ticketId: ticket.id,
+        quantity: 1,
       })
       .expect(201);
 

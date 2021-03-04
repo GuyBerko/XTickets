@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --no-cache",
+    "test": "jest --no-cache --runInBand",
+    "test:watch": "jest --watchAll --no-cache --runInBand",
     "test:ci": "jest",
     "start": "ts-node-dev src/index.ts --poll"
   },
@@ -19,7 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@gb-xtickets/common": "^1.0.13",
+    "@gb-xtickets/common": "^1.0.21",
     "@types/cookie-session": "^2.0.42",
     "@types/express": "^4.17.8",
     "@types/jsonwebtoken": "^8.5.0",
@@ -30,6 +31,7 @@
     "express-validator": "^6.9.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "5.10.19",
+    "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^1.0.0",
     "typescript": "^4.0.5"
   },

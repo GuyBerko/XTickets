@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messeging-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xt-messeging-mongo
+  template:
+    metadata:
+      labels:
+        app: xt-messeging-mongo
+    spec:
+      containers:
+        - name: xt-messeging-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: messeging-mongo-srv
+spec:
+  selector:
+    app: xt-messeging-mongo
+  ports:
+    - name: mongo-db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

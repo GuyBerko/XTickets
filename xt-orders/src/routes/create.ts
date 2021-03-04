@@ -19,10 +19,13 @@ const EXPIRATION_WINDOW_SECONDS = 15 * 60;
 router.post(
   '/api/orders',
   requireAuth,
-  [body('ticketId').not().isEmpty().withMessage('TicketId must be provided')],
+  [
+    body('ticketId').not().isEmpty().withMessage('TicketId must be provided'),
+    body('quantity').not().isEmpty().withMessage('Quantity must be provided'),
+  ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { ticketId } = req.body;
+    const { ticketId, quantity } = req.body;
 
     // Find the ticket the user is trying to order in the db
     const ticket = await Ticket.findById(ticketId);
@@ -43,9 +46,10 @@ router.post(
     // Build the order and save it to the db
     const order = Order.build({
       ticket,
-      status: OrderStatus.Created,
+      status: OrderStatus.AwaitingPayment,
       expiresAt: expiration,
       userId: req.currentUser!.id,
+      quantity,
     });
 
     await order.save();
@@ -57,6 +61,9 @@ router.post(
       expiresAt: order.expiresAt.toISOString(),
       userId: order.userId,
       status: order.status,
+      createdAt: order.createdAt,
+      tax: order.tax,
+      quantity: order.quantity,
       ticket: {
         price: order.ticket.price,
         id: order.ticket.id,

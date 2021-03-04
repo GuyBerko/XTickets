@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 
 let mongo: any;
 
+jest.mock('../nats-client');
+
 beforeAll(async () => {
   process.env.JWT_KEY = 'abc123';
 

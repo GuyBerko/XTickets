@@ -25,6 +25,14 @@ spec:
               value: 'mongodb://auth-mongo-srv:27017/xt-auth'
             - name: PORT
               value: '3000'
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: 'xtickets'
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
 ---
 apiVersion: v1
 kind: Service

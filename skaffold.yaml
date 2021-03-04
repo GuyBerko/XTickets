@@ -41,6 +41,14 @@ build:
         manual:
           - src: 'src/***/*.ts'
             dest: .
+    - image: guyberko/xt-messeging
+      context: xt-messeging
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/***/*.ts'
+            dest: .
     - image: guyberko/xt-payments
       context: xt-payments
       docker:

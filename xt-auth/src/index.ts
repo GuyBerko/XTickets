@@ -1,30 +1,49 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import { natsClient } from './nats-client';
+
+const envVariables = [
+  'JWT_KEY',
+  'MONGO_URI',
+  'NATS_CLUSTER_ID',
+  'NATS_URL',
+  'NATS_CLIENT_ID',
+];
+const PORT = process.env.PORT || 3000;
 
 // Server startup
 (async () => {
-  // TODO: rm log
-  console.log('Starting up auth service');
-
-  if (!process.env.JWT_KEY) {
-    throw new Error('JWT_KEY must be defined');
+  // Verify that all env variables are defined
+  for (const envVariable of envVariables) {
+    if (!process.env[envVariable]) {
+      throw new Error(`${envVariable} is not defined`);
+    }
   }
 
-  if (!process.env.MONGO_URI) {
-    throw new Error('MONGO_URI must be defined');
-  }
+  // Connect to nats streaming server (the event bus)
+  await natsClient.connect(
+    process.env.NATS_CLUSTER_ID!,
+    process.env.NATS_CLIENT_ID!,
+    process.env.NATS_URL!
+  );
 
-  try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
-  } catch (err) {
-    console.error(err);
-  }
+  // If nats connection was closed kill the proccess
+  natsClient.client.on('close', () => {
+    console.log('NATS connection closed!');
+    process.exit();
+  });
 
-  app.listen(process.env.PORT || 3000, () => {
-    console.log(`Auth listening on ${process.env.PORT || 3000}`);
+  // When the process get interrupted close nats client
+  process.on('SIGINT', () => natsClient.client.close());
+  process.on('SIGTERM', () => natsClient.client.close());
+
+  await mongoose.connect(process.env.MONGO_URI!, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  });
+
+  app.listen(PORT, () => {
+    console.log(`Auth listening on ${PORT}`);
   });
 })();

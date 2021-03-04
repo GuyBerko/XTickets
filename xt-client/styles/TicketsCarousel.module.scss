@@ -1,0 +1,39 @@
+.CategoryRow {
+  background: #f8f9fa;
+  width: 99vw;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: #9e9efa 2px 2px 6px -1px;
+}
+
+.CarouselIndicators {
+  background: #ffffff !important;
+  border-radius: 100%;
+  width: 50px !important;
+  height: 50px;
+  position: absolute;
+  z-index: 10011;
+  box-shadow: #7a8bef 0px 0px 7px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: #7589ff 0px 0px 7px 2px;
+    opacity: 1;
+  }
+}
+
+.LeftIndicator {
+  left: 0;
+}
+
+.RightIndicator {
+  right: 0;
+}

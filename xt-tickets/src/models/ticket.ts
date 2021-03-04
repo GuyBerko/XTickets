@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+import { TicketCategory } from '@gb-xtickets/common';
 
 // An interface that describe the properties
 // that are required to create a new ticket
@@ -7,6 +8,10 @@ interface TicketAttrs {
   title: string;
   price: number;
   userId: string;
+  category: TicketCategory;
+  description: string;
+  image: string;
+  date: Date;
 }
 
 // An interface that describe the properties
@@ -23,6 +28,10 @@ interface TicketDoc extends mongoose.Document {
   userId: string;
   version: number;
   orderId?: string;
+  category: TicketCategory;
+  description: string;
+  image: string;
+  date: Date;
 }
 
 const ticketSchema = new mongoose.Schema(
@@ -39,7 +48,22 @@ const ticketSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      enum: Object.values(TicketCategory),
+      required: true,
+    },
+    date: {
+      type: mongoose.Schema.Types.Date,
+      required: true,
+    },
     orderId: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    image: {
       type: String,
     },
   },

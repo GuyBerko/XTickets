@@ -3,6 +3,21 @@ import { app } from '../../app';
 import { getSignupCookie } from '../../test/helpers';
 import { Ticket } from '../../models/ticket';
 import { natsClient } from '../../nats-client';
+import { TicketCategory } from '@gb-xtickets/common';
+
+const setup = ({
+  title = 'concert',
+  price = 10,
+  description = 'desc',
+  category = TicketCategory.Comedy,
+  date = new Date().getTime(),
+} = {}) => ({
+  title,
+  price,
+  description,
+  category,
+  date,
+});
 
 describe('Create Tickets Route', () => {
   it('should listen for /api/tickets for post requests', async () => {
@@ -26,29 +41,37 @@ describe('Create Tickets Route', () => {
     return request(app)
       .post('/api/tickets')
       .set('Cookie', getSignupCookie())
-      .send({
-        title: '',
-        price: 10,
-      })
+      .send(setup({ title: '' }))
+      .expect(400);
+  });
+
+  it('should return error if an invalid category is provided', async () => {
+    const params = setup();
+    //@ts-ignore
+    params.category = 'fakeCategory';
+    return request(app)
+      .post('/api/tickets')
+      .set('Cookie', getSignupCookie())
+      .send(params)
       .expect(400);
   });
 
   it('should returns an error if invalid price is provided', async () => {
+    // negative price
     await request(app)
       .post('/api/tickets')
       .set('Cookie', getSignupCookie())
-      .send({
-        title: 'gdfsgsdg',
-        price: -10,
-      })
+      .send(setup({ price: -10 }))
       .expect(400);
 
+    // undefined price
+    const params = setup();
+    //@ts-ignore
+    params.price = undefined;
     return request(app)
       .post('/api/tickets')
       .set('Cookie', getSignupCookie())
-      .send({
-        title: 'hfdghdfgh',
-      })
+      .send(params)
       .expect(400);
   });
 
@@ -56,10 +79,7 @@ describe('Create Tickets Route', () => {
     let tickets = await Ticket.find({});
     expect(tickets.length).toEqual(0);
 
-    const params = {
-      title: 'gdfsgsdg',
-      price: 10,
-    };
+    const params = setup();
 
     await request(app)
       .post('/api/tickets')
@@ -74,10 +94,7 @@ describe('Create Tickets Route', () => {
   });
 
   it('should publish event', async () => {
-    const params = {
-      title: 'gdfsgsdg',
-      price: 10,
-    };
+    const params = setup();
 
     await request(app)
       .post('/api/tickets')

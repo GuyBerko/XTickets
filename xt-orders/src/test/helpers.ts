@@ -31,13 +31,15 @@ export const getSignupCookie = (
 export const createTicket = async (
   title: string = 'Concert',
   price: number = 30,
-  id: string = mongoose.Types.ObjectId().toHexString()
+  id: string = mongoose.Types.ObjectId().toHexString(),
+  date: Date = new Date()
 ): Promise<TicketDoc> => {
   // Build and Save a new ticket
   const ticket = Ticket.build({
     title,
     price,
     id,
+    date,
   });
   await ticket.save();
   return ticket;

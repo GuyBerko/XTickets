@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import Head from 'next/head'
-import styles from '../styles/Home.module.css';
-import TicketsList from '../components/tickets-list';
+import styles from '../styles/Home.module.scss';
+import TicketsCarousel from '../components/tickets-carousel';
 
 const Home = ({ tickets }) => {
   return (
@@ -11,14 +12,17 @@ const Home = ({ tickets }) => {
       </Head>
 
       <main className={ styles.main }>
-        <TicketsList tickets={ tickets } />
+        { Object.keys(tickets).map((category, index) => (
+          <TicketsCarousel key={ `category-${index}` } tickets={ tickets[category] } category={ category } />
+        )) }
       </main>
-
-      <footer className={ styles.footer }>
-      </footer>
     </div>
   )
 };
+
+Home.propTypes = {
+  tickets: PropTypes.object
+}
 
 Home.getInitialProps = async (context, client) => {
   const { data } = await client.get('/api/tickets');

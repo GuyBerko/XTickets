@@ -7,6 +7,7 @@ import { createTicketRouter } from './routes/create';
 import { getTicketRouter } from './routes/get';
 import { getAllTicketsRouter } from './routes/getAll';
 import { updateTicketRouter } from './routes/update';
+import { getTicketCategoriesRouter } from './routes/getCategories';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use([
   getTicketRouter,
   getAllTicketsRouter,
   updateTicketRouter,
+  getTicketCategoriesRouter,
 ]);
 
 // Setup Error middlewares

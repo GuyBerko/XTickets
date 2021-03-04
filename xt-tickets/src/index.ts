@@ -3,6 +3,7 @@ import { app } from './app';
 import {
   OrderCancelledListener,
   OrderCreatedListener,
+  PaymentCreatedListener,
 } from './events/listeners';
 import { natsClient } from './nats-client';
 
@@ -17,9 +18,6 @@ const envVariables = [
 
 // Server startup
 (async () => {
-  // TODO: rm log
-  console.log('Starting up tickets service');
-
   // Verify that all env variables are defined
   for (const envVariable of envVariables) {
     if (!process.env[envVariable]) {
@@ -47,6 +45,7 @@ const envVariables = [
   // Setup events listeners
   new OrderCreatedListener(natsClient.client).listen();
   new OrderCancelledListener(natsClient.client).listen();
+  new PaymentCreatedListener(natsClient.client).listen();
 
   // Connect to mongodb
   await mongoose.connect(process.env.MONGO_URI!, {

@@ -23,6 +23,7 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
       status: data.status,
       userId: data.userId,
       version: data.version,
+      quantity: data.quantity,
     });
 
     // Save the order

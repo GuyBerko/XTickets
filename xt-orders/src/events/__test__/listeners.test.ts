@@ -1,6 +1,7 @@
 import {
   ExpirationCompleteEvent,
   OrderStatus,
+  TicketCategory,
   TicketCreatedEvent,
   TicketUpdatedEvent,
 } from '@gb-xtickets/common';
@@ -28,6 +29,9 @@ describe('Listeners', () => {
         userId: new mongoose.Types.ObjectId().toHexString(),
         title: 'concert',
         price: 10,
+        date: new Date(),
+        category: TicketCategory.Comedy,
+        description: 'desc',
       };
 
       // Create a fake message object
@@ -73,6 +77,7 @@ describe('Listeners', () => {
         title: 'concert',
         price: 20,
         id: new mongoose.Types.ObjectId().toHexString(),
+        date: new Date(),
       });
 
       await ticket.save();
@@ -84,6 +89,9 @@ describe('Listeners', () => {
         userId: new mongoose.Types.ObjectId().toHexString(),
         title: 'updated concert',
         price: 30,
+        category: TicketCategory.Comedy,
+        date: new Date(),
+        description: 'desc',
       };
 
       // Create a fake message object
@@ -144,6 +152,7 @@ describe('Listeners', () => {
         title: 'concert',
         price: 20,
         id: new mongoose.Types.ObjectId().toHexString(),
+        date: new Date(),
       });
 
       await ticket.save();
@@ -154,6 +163,7 @@ describe('Listeners', () => {
         userId: 'someFakeId',
         expiresAt: new Date(),
         ticket,
+        quantity: 1,
       });
 
       await order.save();

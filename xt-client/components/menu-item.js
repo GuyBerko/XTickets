@@ -4,11 +4,9 @@ import Link from 'next/link';
 
 const MenuItem = ({ item }) => {
   return (
-    <li className="nav-item active">
-      <Link href={ item.href }>
-        <a className="nav-link">{ item.label }</a>
-      </Link>
-    </li>
+    <Link href={ item.href }>
+      <a className="nav-link">{ item.label }</a>
+    </Link>
   )
 }
 

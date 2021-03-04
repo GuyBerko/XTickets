@@ -1,5 +1,5 @@
 import { Subjects } from './subjects';
-import { OrderStatus } from './types/order-status';
+import { OrderStatus, TicketCategory } from './types';
 
 export interface TicketCreatedEvent {
   subject: Subjects.TicketCreated;
@@ -7,6 +7,9 @@ export interface TicketCreatedEvent {
     id: string;
     version: number;
     title: string;
+    category: TicketCategory;
+    description: string;
+    date: Date;
     price: number;
     userId: string;
   };
@@ -19,6 +22,9 @@ export interface TicketUpdatedEvent {
     version: number;
     title: string;
     price: number;
+    category: TicketCategory;
+    description: string;
+    date: Date;
     userId: string;
     orderId?: string;
   };
@@ -29,9 +35,12 @@ export interface OrderCreatedEvent {
   data: {
     id: string;
     version: number;
+    quantity: number;
     expiresAt: string;
     userId: string;
     status: OrderStatus;
+    createdAt: Date;
+    tax: number;
     ticket: {
       price: number;
       id: string;
@@ -63,5 +72,14 @@ export interface PaymentCreatedEvent {
     id: string;
     orderId: string;
     stripeId: string;
+  };
+}
+
+export interface UserCreatedEvent {
+  subject: Subjects.UserCreated;
+  data: {
+    email: string;
+    name: string;
+    id: string;
   };
 }
