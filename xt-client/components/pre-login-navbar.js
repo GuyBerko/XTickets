@@ -2,16 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { preLoginMenu } from '../utils/menu';
 import MenuItem from './menu-item';
+import { NavItem } from 'reactstrap';
+import styles from '../styles/NavBar.module.scss';
 
 const PreLoginNavbar = () => {
   return (
-    <ul className="nav d-flex align-items-center">
-      {preLoginMenu.map((item, index) => (
+    preLoginMenu.map((item, index) => (
+      <NavItem className={ styles.NavItem }>
         <MenuItem item={ item } key={ `menu-item-${index}` } />
-      )) }
-    </ul>
+      </NavItem>
+    ))
   )
 }
+
+
+
 
 PreLoginNavbar.propTypes = {
 
