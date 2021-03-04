@@ -8,6 +8,7 @@ describe('SignOut Route', () => {
       .send({
         email: 'test@test.com',
         password: 'password',
+        name: 'testname',
       })
       .expect(201);
 
