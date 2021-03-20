@@ -105,8 +105,7 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
     );
 
     // Add job to map so we be able to delete it if nessery
-    //@ts-ignore
-    jobsRemainderMap[order.id] = job;
+    jobsRemainderMap[order.id] = job.id;
 
     // acknowledge the message
     msg.ack();
