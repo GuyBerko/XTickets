@@ -12,12 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Decrypt gcp secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          GCP_JSON_KEY: ${{ secrets.GCP_JSON_KEY }}
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/xt-tickets/src/utils/xtickets-ab876349e8b0.json
+      - name: Build and Push to docker
       - run: cd xt-tickets && docker build -t guyberko/xt-tickets .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push guyberko/xt-tickets
+      - name: Restart cluster deployment
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DGITALOCEAN_ACCESS_TOKEN }}
