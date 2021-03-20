@@ -9,7 +9,7 @@ const OrdersList = ({ orders }) => {
   const getDate = (date) => (new Date(date).toDateString());
 
   const getExpiresAt = (date, status) => {
-    if (status !== 'awaiting:payment' || status !== 'created') {
+    if (status === 'cancelled' || status === 'complete') {
       return '-';
     }
 

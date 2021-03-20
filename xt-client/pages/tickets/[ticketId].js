@@ -49,20 +49,20 @@ const TicketInfo = ({ ticket }) => {
       <Container fluid="lg" className={ styles.Wrapper }>
         <Row>
           <Col className={ styles.TicketInfoCol }>
-            <Row>
+            <Row className={ styles.Row }>
               <Col>{ ticket.title }</Col>
             </Row>
-            <Row>
+            <Row className={ styles.Row }>
               <Col>{ ticket.description }</Col>
             </Row>
-            <Row>
+            <Row className={ styles.Row }>
               <Col xs="auto">{ new Date(ticket.date).toDateString() } - </Col>
-              <Col xs="auto">{ ticket.price } $</Col>
+              <Col xs="auto">{ (ticket.price * quantity).toFixed(2) } $</Col>
             </Row>
-            <Row>
+            <Row className={ styles.Row }>
               <Col><QuantityInput value={ quantity } onChange={ onQuantityChange } /></Col>
             </Row>
-            <Row>
+            <Row className={ styles.Row }>
               <Col>
                 { errors }
                 <button className="btn btn-primary" onClick={ () => purchaseTicket() }>Purchase</button>
@@ -70,7 +70,7 @@ const TicketInfo = ({ ticket }) => {
             </Row>
           </Col>
           <Col>
-            <img className={ styles.Image } src="https://media.stubhubstatic.com/stubhub-catalog/d_defaultLogo.jpg/t_f-fs-0fv,q_auto:low,f_auto,c_fill,$w_218_mul_3,$h_172_mul_3/performer/188486/1862a0d035db8349f62a7de21cea5872" />
+            <img className={ styles.Image } src={ ticket.image } />
           </Col>
         </Row>
       </Container>

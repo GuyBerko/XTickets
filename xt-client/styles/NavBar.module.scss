@@ -11,3 +11,23 @@
   border-radius: 10px;
   margin-top: 20px;
 }
+
+.NavBarWrapper {
+  justify-content: space-between;
+}
+
+.Collapse {
+  flex-grow: unset;
+}
+
+.NavBrand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
+}
+
+.HomeIcon {
+  width: 45px !important;
+  height: unset;
+}
