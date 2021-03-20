@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --no-cache --runInBand",
     "test:watch": "jest --watchAll --no-cache --runInBand",
-    "test:ci": "jest",
+    "test:ci": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node-dev src/index.ts --poll"
   },
   "jest": {
