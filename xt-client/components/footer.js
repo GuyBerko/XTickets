@@ -9,11 +9,11 @@ const Footer = () => {
     <footer className={ styles.Footer }>
       <Container>
         <Row className={ styles.Centerized }>
-          <Col xs="1">
-            <a href="https://www.linkedin.com/in/guy-berkovich-8a4892123/" target="_blank"><FontAwesomeIcon size="1x" icon={ faLinkedin } /></a>
+          <Col xs="2">
+            <a href="https://www.linkedin.com/in/guy-berkovich-8a4892123/" target="_blank"><FontAwesomeIcon className={ styles.Icon } icon={ faLinkedin } /></a>
           </Col>
-          <Col xs="1">
-            <a href="https://github.com/GuyBerko" target="_blank"><FontAwesomeIcon size="1x" icon={ faGithubSquare } /></a>
+          <Col xs="2">
+            <a href="https://github.com/GuyBerko" target="_blank"><FontAwesomeIcon className={ styles.Icon } icon={ faGithubSquare } /></a>
           </Col>
         </Row>
         <Row xs="1">

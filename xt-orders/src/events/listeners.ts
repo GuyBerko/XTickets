@@ -114,8 +114,6 @@ export class PaymentCreatedListener extends Listener<PaymentCreatedEvent> {
       status: OrderStatus.Complete,
     });
 
-    // TODO: create order update event and publish it
-
     await order.save();
 
     msg.ack();

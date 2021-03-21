@@ -1,0 +1,13 @@
+name: Tests-Messeging
+
+on:
+  pull_request:
+    paths:
+      - 'xt-messeging/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd xt-messeging && npm i && npm run test:ci

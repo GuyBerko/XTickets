@@ -31,9 +31,16 @@ describe('Listeners', () => {
         },
       };
 
-      // @ts-ignore
       const msg: Message = {
         ack: jest.fn(),
+        getSubject: jest.fn(),
+        getSequence: jest.fn(),
+        getRawData: jest.fn(),
+        getData: jest.fn(),
+        getTimestampRaw: jest.fn(),
+        getTimestamp: jest.fn(),
+        isRedelivered: jest.fn(),
+        getCrc32: jest.fn(),
       };
 
       return {
@@ -96,9 +103,16 @@ describe('Listeners', () => {
         },
       };
 
-      // @ts-ignore
       const msg: Message = {
         ack: jest.fn(),
+        getSubject: jest.fn(),
+        getSequence: jest.fn(),
+        getRawData: jest.fn(),
+        getData: jest.fn(),
+        getTimestampRaw: jest.fn(),
+        getTimestamp: jest.fn(),
+        isRedelivered: jest.fn(),
+        getCrc32: jest.fn(),
       };
 
       return {

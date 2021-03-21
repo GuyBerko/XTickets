@@ -4,16 +4,21 @@ import {
   requireAuth,
   validateRequest,
   TicketCategory,
+  BadRequestError,
 } from '@gb-xtickets/common';
 import { Ticket } from '../models/ticket';
 import { TicketCreatedPublisher } from '../events/publishers';
 import { natsClient } from '../nats-client';
+import { uploadFile } from '../utils/storage';
+import multer from 'multer';
 
+const upload = multer();
 const router = express.Router();
 
 router.post(
   '/api/tickets',
   requireAuth,
+  upload.single('image'),
   [
     body('title').not().isEmpty().withMessage('Title is required'),
     body('category')
@@ -27,13 +32,20 @@ router.post(
   validateRequest,
   async (req: Request, res: Response) => {
     const { title, price, category, description, date } = req.body;
+    const image = req.file;
+
+    try {
+      var imageUrl = await uploadFile(image);
+    } catch (err) {
+      throw new BadRequestError(`[CreateTicketRouter][Upload] - ${err}`);
+    }
 
     const ticket = Ticket.build({
       title,
       price,
       category,
       description,
-      image: '', // TODO: add image url from client
+      image: imageUrl,
       userId: req.currentUser!.id,
       date: new Date(date),
     });

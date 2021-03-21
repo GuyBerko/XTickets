@@ -9,7 +9,7 @@ export enum OrderQueueTypes {
   'OrderRemainder' = 'order:remainder',
 }
 
-export const jobsRemainderMap: object = {};
+export const jobsRemainderMap: { [key: string]: number | string } = {};
 
 interface Payload {
   order: OrderDoc;
@@ -56,12 +56,15 @@ orderQueue.process(async (job) => {
 });
 
 const removeReminderJob = (orderId: string) => {
-  //@ts-ignore
-  const job = jobsRemainderMap[orderId];
-  if (!job) return;
-  job.remove();
-  //@ts-ignore
-  delete jobsRemainderMap[orderId];
+  const jobId = jobsRemainderMap[orderId];
+  if (!jobId) return;
+  orderQueue.getJob(jobId).then((job) => {
+    if (job) {
+      job.remove();
+    }
+
+    delete jobsRemainderMap[orderId];
+  });
 };
 
 const sendEmail = async (

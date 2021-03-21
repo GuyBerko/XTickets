@@ -2,6 +2,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 
 jest.mock('../nats-client');
+jest.mock('../utils/storage');
 
 let mongo: any;
 

@@ -4,7 +4,7 @@ import useRequest from '../../hooks/use-request';
 import Router from 'next/router';
 import Head from 'next/head';
 import Validators from '../../utils/validators';
-import { Button, Form } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import FloatingLabelInput from '../../components/floating-label-input';
 
 import styles from '../../styles/NewTicket.module.scss';
@@ -16,18 +16,14 @@ const NewTicket = ({ categories }) => {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
+  const [image, setImage] = useState({});
   const [priceValidation, setPriceValidation] = useState(null);
   const [titleValidation, setTitleValidation] = useState(null);
   const [dateValidation, setDateValidation] = useState(null);
   const [createTicket, errors] = useRequest({
     url: '/api/tickets',
     method: 'post',
-    body: {
-      title,
-      price,
-      category,
-      description,
-    },
+    useFormData: true,
     onSuccess: () => Router.push('/')
   });
 
@@ -63,6 +59,10 @@ const NewTicket = ({ categories }) => {
           setDateValidation(new Date(value) > new Date());
         }
         setDate(value);
+        break;
+      }
+      case 'image': {
+        setImage(e.target.files[0]);
         break;
       }
       default:
@@ -109,10 +109,14 @@ const NewTicket = ({ categories }) => {
     e.preventDefault();
 
     let valid = true;
+    const data = new FormData();
 
     params.fields.forEach(field => {
       if (!validateField(field.name, values[field.name].value)) {
         valid = false;
+      } else {
+        const value = field.type === 'date' ? new Date(values[field.name].value) : values[field.name].value;
+        data.append(field.name, value);
       }
     });
 
@@ -120,7 +124,8 @@ const NewTicket = ({ categories }) => {
       return;
     }
 
-    createTicket({ date: new Date(date) });
+    data.append('image', image);
+    createTicket(data);
   };
 
 
@@ -148,8 +153,7 @@ const NewTicket = ({ categories }) => {
   };
 
   // Add te categories from the backend to the category field
-  // TODO: think on a better approch for this
-  if (!params.fields[0].options) {
+  if (params.fields[0].options.length === 1) {
     categories.forEach(category => {
       params.fields[0].options.push({
         label: category,
@@ -174,6 +178,10 @@ const NewTicket = ({ categories }) => {
             value={ values[field.name].value }
             { ...field } />
         )) }
+        <FormGroup className={ styles.UploadWrapper }>
+          <Label for="image">Event image</Label>
+          <Input type="file" name="image" id="image" onChange={ onChange } />
+        </FormGroup>
         { errors }
         <Button className={ styles.SubmitButton } size="lg" color="primary" type="submit">{ params.submitText }</Button>
       </Form>
