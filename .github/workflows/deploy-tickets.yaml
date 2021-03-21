@@ -25,13 +25,14 @@ jobs:
         run: cat $HOME/xt-tickets/src/utils/xtickets-ab876349e8b0.json
       - name: Build Docker image
         run: cd xt-tickets && docker build -t guyberko/xt-tickets .
-      - name: Login to Docker 
+      - name: Login to Docker
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push to Docker
         run: docker push guyberko/xt-tickets
-      - name: Restart Cluster
+      - name: Save Cluster configuration
         run: doctl kubernetes cluster kubeconfig save xtickets
+      - name: Restart Cluster
         run: kubectl rollout restart deployment tickets-depl
