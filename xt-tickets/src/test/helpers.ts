@@ -16,7 +16,7 @@ export const getSignupCookie = (
 
   const token = jwt.sign(payload, process.env.JWT_KEY!);
 
-  // Build session Object. { jwt: MY_JWT }
+  // Build session Object.
   const session = { jwt: token };
 
   // Turn that session into JSON
