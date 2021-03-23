@@ -8,6 +8,8 @@ import {
 import { natsClient } from './nats-client';
 
 const PORT = process.env.PORT || 3000;
+
+// Environment variables keys
 const envVariables = [
   'JWT_KEY',
   'MONGO_URI',
