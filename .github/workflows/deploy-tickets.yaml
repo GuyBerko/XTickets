@@ -22,7 +22,7 @@ jobs:
         env:
           GCP_JSON_KEY: ${{ secrets.GCP_JSON_KEY }}
       - name: log secrets
-        run: cat $HOME/xt-tickets/src/utils/xtickets-ab876349e8b0.json
+        run: cat $HOME/secrets/xtickets-ab876349e8b0.json
       - name: Build Docker image
         run: cd xt-tickets && docker build -t guyberko/xt-tickets .
       - name: Login to Docker
