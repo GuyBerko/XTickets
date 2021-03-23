@@ -31,6 +31,8 @@ spec:
               value: 'xtickets'
             - name: NODE_ENV
               value: 'development'
+            - name: GCP_STORAGE_KEY_PATH
+              value: '/secrets/xtickets-ab876349e8b0.json'
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:

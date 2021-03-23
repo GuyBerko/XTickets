@@ -3,7 +3,10 @@ import { Storage } from '@google-cloud/storage';
 import path from 'path';
 import os from 'os';
 
-const serviceKey = path.join(os.homedir(), process.env.GCP_STORAGE_KEY_PATH!);
+const serviceKey = path.join(
+  os.homedir(),
+  process.env.NODE_ENV !== 'test' ? process.env.GCP_STORAGE_KEY_PATH! : ''
+);
 
 const GOOGLE_CLOUD_PROJECT_ID = 'xtickets';
 const bucketName = 'xtickets';
