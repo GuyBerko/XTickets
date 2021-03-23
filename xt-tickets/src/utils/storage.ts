@@ -1,8 +1,9 @@
 import { BadRequestError } from '@gb-xtickets/common';
 import { Storage } from '@google-cloud/storage';
 import path from 'path';
+import os from 'os';
 
-const serviceKey = path.join(__dirname, '/xtickets-ab876349e8b0.json');
+const serviceKey = path.join(os.homedir(), process.env.GCP_STORAGE_KEY_PATH!);
 
 const GOOGLE_CLOUD_PROJECT_ID = 'xtickets';
 const bucketName = 'xtickets';

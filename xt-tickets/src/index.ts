@@ -16,6 +16,7 @@ const envVariables = [
   'NATS_CLUSTER_ID',
   'NATS_URL',
   'NATS_CLIENT_ID',
+  'GCP_STORAGE_KEY_PATH',
 ];
 
 // Server startup
