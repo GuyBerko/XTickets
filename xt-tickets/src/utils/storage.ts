@@ -2,7 +2,7 @@ import { BadRequestError } from '@gb-xtickets/common';
 import { Storage } from '@google-cloud/storage';
 import path from 'path';
 import os from 'os';
-
+// TODO: rm
 const serviceKey = path.join(
   os.homedir(),
   process.env.NODE_ENV !== 'test' ? process.env.GCP_STORAGE_KEY_PATH! : ''
