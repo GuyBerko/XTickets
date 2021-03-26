@@ -13,7 +13,7 @@ const bucketName = 'xtickets';
 
 const storage = new Storage({
   projectId: GOOGLE_CLOUD_PROJECT_ID,
-  keyFilename: '~/secrets/xtickets-ab876349e8b0.json',
+  keyFilename: serviceKey,
 });
 
 export const uploadFile = async (file: any): Promise<string> => {
