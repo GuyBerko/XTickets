@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Decrypt the file
-mkdir $HOME/secrets
+mkdir ~/secrets
 # --batch to prevent interactive command
-# --yes to assume "yes" for questions
+# --yes to assume "yes" for questions $HOME
 gpg --quiet --batch --yes --decrypt --passphrase="$GCP_JSON_KEY" \
---output $HOME/secrets/xtickets-ab876349e8b0.json xtickets-ab876349e8b0.json.gpg
+--output ~/secrets/xtickets-ab876349e8b0.json xtickets-ab876349e8b0.json.gpg
