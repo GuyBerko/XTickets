@@ -21,6 +21,7 @@ jobs:
         run: ./.github/scripts/decrypt_secret.sh
         env:
           GCP_JSON_KEY: ${{ secrets.GCP_JSON_KEY }}
+          GCP_JSON_KEY_NAME: ${{ secrets.GCP_JSON_KEY_NAME }}
       - name: Build Docker image
         run: cd xt-tickets && docker build -t guyberko/xt-tickets .
       - name: Login to Docker
