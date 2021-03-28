@@ -1,0 +1,41 @@
+name: deploy-tickets-manual
+
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup checkout
+        uses: actions/checkout@v2
+      - name: Setup doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DGITALOCEAN_ACCESS_TOKEN }}
+      - name: Decrypt secrets
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          GCP_JSON_KEY: ${{ secrets.GCP_JSON_KEY }}
+      - name: Build Docker image
+        run: cd xt-tickets && docker build -t guyberko/xt-tickets .
+      - name: Login to Docker
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push to Docker
+        run: docker push guyberko/xt-tickets
+      - name: Save Cluster configuration
+        run: doctl kubernetes cluster kubeconfig save xtickets
+      - name: Restart Cluster
+        run: kubectl rollout restart deployment tickets-depl
