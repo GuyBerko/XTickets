@@ -3,6 +3,31 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  height: 69vh;
-  overflow-x: scroll;
+  min-height: 69vh;
+}
+
+.OrderListCards {
+  display: none;
+}
+
+.Card {
+  margin-bottom: 25px;
+}
+
+.Ul {
+  list-style: none;
+}
+
+.CardHr {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .OrderListTable {
+    display: none;
+  }
+  .OrderListCards {
+    display: block;
+  }
 }
