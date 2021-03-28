@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head'
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Col, Table, Card, Button, CardText, List, CardBody, CardHeader, CardFooter } from 'reactstrap';
 import styles from '../../styles/OrdersList.module.scss';
 import Link from 'next/link';
 
@@ -57,7 +57,8 @@ const OrdersList = ({ orders }) => {
         <div className={ styles.Wrapper }>
           <Row>
             <Col sm="auto">
-              <Table striped>
+              <h2>Orders:</h2>
+              <Table striped className={ styles.OrderListTable }>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -87,6 +88,39 @@ const OrdersList = ({ orders }) => {
                   )) }
                 </tbody>
               </Table>
+              <div className={ styles.OrderListCards }>
+                {
+                  orders.map((order, index) => (
+                    <Card className={ styles.Card } key={ `order-card-${index}` }>
+                      <CardHeader><b>Event Name:</b> { order.ticket.title }</CardHeader>
+                      <CardBody>
+                        <CardText>
+                          <ul className={ styles.Ul }>
+                            <li><b>Event Date:</b> { getDate(order.ticket.date) }</li>
+                            <hr className={ styles.CardHr }></hr>
+                            <li><b>Order Date:</b> { getDate(order.ticket.createdAt) }</li>
+                            <hr className={ styles.CardHr }></hr>
+                            <li><b>Order Expires At:</b> { getExpiresAt(order.expiresAt, order.status) }</li>
+                            <hr className={ styles.CardHr }></hr>
+                            <li><b>Order Status:</b> { getStatus(order.status) }</li>
+                            <hr className={ styles.CardHr }></hr>
+                            <li><b>Quantity:</b> { order.quantity }</li>
+                            <hr className={ styles.CardHr }></hr>
+                            <li><b>Price Per Ticket:</b> { order.ticket.price } $</li>
+                            <hr className={ styles.CardHr }></hr>
+                            <li><b>Total Price:</b> { (order.ticket.price * order.quantity).toFixed(2) } $</li>
+                          </ul>
+                        </CardText>
+                      </CardBody>
+                      <CardFooter>
+                        <Button color="info">
+                          <Link href="/orders/[orderId]" as={ `/orders/${order.id}` }><a>See order info</a></Link>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  ))
+                }
+              </div>
             </Col>
           </Row>
         </div>
