@@ -21,6 +21,11 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: GCP_JSON_KEY_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: gcp-file-name-secret
+                  key: GCP_JSON_KEY_NAME
             - name: MONGO_URI
               value: 'mongodb://tickets-mongo-srv:27017/xt-tickets'
             - name: PORT
@@ -31,8 +36,6 @@ spec:
               value: 'xtickets'
             - name: NODE_ENV
               value: 'production'
-            - name: GCP_STORAGE_KEY_PATH
-              value: '/secrets/xtickets-ab876349e8b0.json'
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
