@@ -27,12 +27,7 @@ export abstract class Publisher<T extends Event> {
    */
   publish(data: T['data']): Promise<void> {
     return new Promise((res, rej) => {
-      try {
-        var parsedData = JSON.stringify(data);
-      } catch (err) {
-        return rej(`[Publisher][${this.subject}] - data is not a valid json`);
-      }
-      this.client.publish(this.subject, parsedData, (err) => {
+      this.client.publish(this.subject, JSON.stringify(data), (err) => {
         if (err) {
           return rej(err);
         }
