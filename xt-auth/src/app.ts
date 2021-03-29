@@ -14,8 +14,8 @@ const app = express();
 // Setup trust proxy to allow non https requests
 app.set('trust proxy', true);
 
-// Add json parsing and session cookies
 app.use(json());
+
 app.use(
   cookieSession({
     signed: false,
@@ -23,13 +23,13 @@ app.use(
   })
 );
 
-// Setup Routers
 app.use([currentUserRouter, signinRouter, signupRouter, signoutRouter]);
+app.use(errorHandler);
 
-// Setup Error middlewares
+// Throw error for requests that are not part of the valid routes
 app.all('*', () => {
   throw new NotFoundError('Error Not Found');
 });
-app.use(errorHandler);
+
 
 export { app };
