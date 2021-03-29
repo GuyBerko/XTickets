@@ -11,7 +11,7 @@ import { signoutRouter } from './routes/signout';
 
 const app = express();
 
-// Setup proxy trust
+// Setup trust proxy to allow non https requests
 app.set('trust proxy', true);
 
 // Add json parsing and session cookies
