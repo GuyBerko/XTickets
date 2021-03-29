@@ -47,7 +47,7 @@ router.post(
       jwt: userJWT,
     };
 
-    // Publish an event saying that an user was created
+    // Publish an event saying that a new user was created
     new UserCreatedPublisher(natsClient.client).publish({
       email: user.email,
       name: user.name,
