@@ -23,12 +23,12 @@ router.post(
       throw new BadRequestError('[Signin Route] - Invalid credentials');
     }
 
-    const passwordValid = await PasswordManager.compare(
+    const isPasswordValid = await PasswordManager.compare(
       existingUser.password,
       password
     );
 
-    if (!passwordValid) {
+    if (!isPasswordValid) {
       throw new BadRequestError('[Signin Route] - Invalid credentials');
     }
 
