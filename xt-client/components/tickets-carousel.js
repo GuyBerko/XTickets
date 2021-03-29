@@ -4,8 +4,7 @@ import TicketsList from './tickets-list';
 import {
   Carousel,
   CarouselItem,
-  CarouselControl,
-  CarouselIndicators
+  CarouselControl
 } from 'reactstrap';
 import styles from '../styles/TicketsCarousel.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,11 +25,6 @@ const TicketsCarousel = ({ tickets, category }) => {
     if (animating) return;
     const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
-  }
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
   }
 
   const updateNumberInRow = () => {
@@ -87,10 +81,13 @@ const TicketsCarousel = ({ tickets, category }) => {
         previous={ previous }
         interval={ false }
       >
-        <CarouselIndicators items={ items } activeIndex={ activeIndex } onClickHandler={ goToIndex } />
         { items }
-        <div className={ [styles.CarouselIndicators, styles.RightIndicator].join(' ') } onClick={ next }><FontAwesomeIcon width="20px" fixedWidth icon={ faChevronRight } /></div>
-        <div className={ [styles.CarouselIndicators, styles.LeftIndicator].join(' ') } onClick={ previous }><FontAwesomeIcon width="20px" fixedWidth icon={ faChevronLeft } /></div>
+        { items.length > 1 && (
+          <>
+            <div className={ [styles.CarouselIndicators, styles.RightIndicator].join(' ') } onClick={ next }><FontAwesomeIcon width="20px" fixedWidth icon={ faChevronRight } /></div>
+            <div className={ [styles.CarouselIndicators, styles.LeftIndicator].join(' ') } onClick={ previous }><FontAwesomeIcon width="20px" fixedWidth icon={ faChevronLeft } /></div>
+          </>
+        ) }
       </Carousel>
     </div>
   )
