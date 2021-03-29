@@ -1,6 +1,10 @@
 import { Subjects } from './subjects';
 import { OrderStatus, TicketCategory } from './types';
 
+/**
+ * Define the structure for all of the available message bus events
+ */
+
 export interface TicketCreatedEvent {
   subject: Subjects.TicketCreated;
   data: {
