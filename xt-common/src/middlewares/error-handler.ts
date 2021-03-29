@@ -2,12 +2,11 @@ import { NextFunction, Request, Response } from 'express';
 import { CustomError } from '../errors/custom-error';
 
 /**
- *
+ * A middleware that catch request errors and return a constant structured error response
  * @param err - the error that was thrown
  * @param req - the express router request
  * @param res - the express router response
  * @param next - express next function
- * @returns
  */
 export const errorHandler = (
   err: Error,

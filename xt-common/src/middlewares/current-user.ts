@@ -19,7 +19,7 @@ declare global {
 }
 
 /**
- * Middleware that add the cuurent user data to the request.
+ * A middleware that add the cuurent user data to the request.
  * it's look for jwt in the request session if exist verify and decrypt it.
  * @param req - the express router request
  * @param res - the express router response
