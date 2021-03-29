@@ -1,5 +1,9 @@
 import { CustomError } from './custom-error';
 
+/**
+ * An implementation for a database connection custom error.
+ * The server could not connect to the database due to system error.
+ */
 export class DatabaseConnectionError extends CustomError {
   reason = 'Error connecting to database';
   statusCode = 500;

@@ -1,3 +1,6 @@
+/**
+ * Define the possible order statuses
+ */
 export enum OrderStatus {
   // When the order has been created, but the
   // ticket it is trying to order has not been reserved
@@ -16,6 +19,9 @@ export enum OrderStatus {
   Complete = 'complete',
 }
 
+/**
+ * Define the possible ticket categories
+ */
 export enum TicketCategory {
   Concerts = 'Concerts',
   Sports = 'Sports',

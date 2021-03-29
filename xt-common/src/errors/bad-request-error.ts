@@ -1,5 +1,9 @@
 import { CustomError } from './custom-error';
 
+/**
+ * An implementation for a bad request custom error.
+ * The server could not understand the request due to invalid syntax.
+ */
 export class BadRequestError extends CustomError {
   statusCode = 400;
 
