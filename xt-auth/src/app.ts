@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
+
 import { errorHandler, NotFoundError } from '@gb-xtickets/common';
 
 import { currentUserRouter } from './routes/current-user';
