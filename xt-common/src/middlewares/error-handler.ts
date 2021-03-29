@@ -15,11 +15,13 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
+  // TODO: add logger
   if (err instanceof CustomError) {
-    return res.status(err.statusCode).send({ errors: err.serializeErrors() });
+    return res.status(err.statusCode).send({
+      errors: err.serializeErrors(),
+    });
   }
 
-  console.error(err);
   res.status(400).send({
     errors: [{ message: 'Something went wrong' }],
   });

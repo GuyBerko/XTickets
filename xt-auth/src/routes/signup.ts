@@ -1,7 +1,9 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
+
 import { BadRequestError, validateRequest } from '@gb-xtickets/common';
+
 import { User } from '../models/user';
 import { UserCreatedPublisher } from '../events/publishers';
 import { natsClient } from '../nats-client';
@@ -45,7 +47,7 @@ router.post(
       jwt: userJWT,
     };
 
-    // Publish an event saying that an user was created
+    // Publish an event saying that a new user was created
     new UserCreatedPublisher(natsClient.client).publish({
       email: user.email,
       name: user.name,

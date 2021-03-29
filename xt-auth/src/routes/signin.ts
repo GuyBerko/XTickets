@@ -1,7 +1,9 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
+
 import { BadRequestError, validateRequest } from '@gb-xtickets/common';
+
 import { User } from '../models/user';
 import { PasswordManager } from '../utils/password-manager';
 
@@ -23,12 +25,12 @@ router.post(
       throw new BadRequestError('[Signin Route] - Invalid credentials');
     }
 
-    const passwordValid = await PasswordManager.compare(
+    const isPasswordValid = await PasswordManager.compare(
       existingUser.password,
       password
     );
 
-    if (!passwordValid) {
+    if (!isPasswordValid) {
       throw new BadRequestError('[Signin Route] - Invalid credentials');
     }
 

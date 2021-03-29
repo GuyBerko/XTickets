@@ -2,7 +2,7 @@ import request from 'supertest';
 import { app } from '../../app';
 
 describe('SignIn Route', () => {
-  it('should return 201 on successful signin', async () => {
+  it('should return 200 on successful signin', async () => {
     await request(app)
       .post('/api/users/signup')
       .send({
