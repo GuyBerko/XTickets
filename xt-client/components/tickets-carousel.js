@@ -32,6 +32,7 @@ const TicketsCarousel = ({ tickets, category }) => {
     const cw = 265;
     const iw = vw * 0.04 * 2;
     const numInRow = Math.floor((vw - iw) / cw);
+    setActiveIndex(0);
     setnumCardsInRow(numInRow);
   }
 
