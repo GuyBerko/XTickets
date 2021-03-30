@@ -21,24 +21,21 @@
     <img src="https://storage.googleapis.com/xtickets/assets/logo-black.png" alt="Logo">
   </a>
 
-  <h3 align="center">XTickets</h3>
-
   <p align="center">
     XTicket it's an application designated for buying and selling tickets.
 
-The application was built in a microservices design pattern.
+    The application was built in a microservices design pattern.
 
-The backend was written with Node.js and typescript and the client was written with React server side rendering.
-<br />
-<a href="https://github.com/GuyBerko/xtickets"><strong>Explore the docs »</strong></a>
-<br />
-<br />
-<a href="http://guy-berkovich.com">View Demo</a>
-·
-<a href="https://github.com/GuyBerko/xtickets/issues">Report Bug</a>
-·
-<a href="https://github.com/GuyBerko/xtickets/issues">Request Feature</a>
-
+    The backend was written with Node.js and typescript and the client was written with React server side rendering.
+    <br />
+    <a href="https://github.com/GuyBerko/xtickets"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="http://guy-berkovich.com">View Demo</a>
+    ·
+    <a href="https://github.com/GuyBerko/xtickets/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/GuyBerko/xtickets/issues">Request Feature</a>
   </p>
 </p>
 
