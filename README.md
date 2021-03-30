@@ -58,6 +58,32 @@
 ## About The Project
 <img src="https://storage.googleapis.com/portfolio-309012/xtickets-desktop2.PNG" alt="project screen shot" />
 
+<!-- PROJECT STRUCTURE -->
+
+## Project Structure
+<ul>
+  <li>xt-client - React application</li>
+  <li>xt-common - Npm library for common code implantation</li>
+  <li>
+    <span>Infrastructure</span>
+    <ul>
+      <li>.github - CI/CD workflow configuration</li>
+      <li>xt-infra - Kubernetes infrastructure configuration</li>
+    </ul>
+  </li>
+  <li>
+    <span>Services</span>
+    <ul>
+      <li>xt-auth - Node.js + express application for users authentication</li>
+      <li>xt-expiration - Node.js application for orders expiration job scheduler</li>
+      <li>xt-orders - Node.js + express application for managing ticket orders</li>
+      <li>xt-payments - Node.js + express application for payment processing</li>
+      <li>xt-messeging - Node.js application for sending messages to the users (currently emails only)</li>
+      <li>xt-tickets - Node.js + express application for managing tickets</li>
+    </ul>
+  </li>
+</ul>
+
 ### Built With
 
 - [Nats streaming server](https://github.com/nats-io/nats-streaming-server) - for the event bus implementation.
