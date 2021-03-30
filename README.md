@@ -69,14 +69,15 @@
 
 ### Built With
 
-- [https://github.com/nats-io/nats-streaming-server](Nats streaming server) - for the event bus implementation.
-- [https://github.com/OptimalBits/bull](Bull.js) - for job scheduler and event queue.
-- [https://www.npmjs.com/package/@google-cloud/storage](Google Cloud Storage) - for images bucket.
-- [https://nextjs.org/](Next.js) - for server side rendering client.
-- [https://www.mongodb.com/](Mongodb) - for services database.
-- [https://redis.io/](Redis) - for services databse.
-- [https://reactstrap.github.io/](Reactstrap) - for react bootstrap implementation.
-- [https://sendgrid.com/](Sendgrid) - for email server.
+- [Nats streaming server](https://github.com/nats-io/nats-streaming-server) - for the event bus implementation.
+- [Bull.js](https://github.com/OptimalBits/bull) - for job scheduler and event queue.
+- [Google Cloud Storage](https://www.npmjs.com/package/@google-cloud/storage) - for images bucket.
+- [Next.js](https://nextjs.org/) - for server side rendering client.
+- [Stripe](https://stripe.com/) - for payments and credit card processing.
+- [Mongodb](https://www.mongodb.com/) - for services database.
+- [Redis](https://redis.io/) - for services databse.
+- [Reactstrap](https://reactstrap.github.io/) - for react bootstrap implementation.
+- [Sendgrid](https://sendgrid.com/) - for email server.
 
 <!-- GETTING STARTED -->
 
