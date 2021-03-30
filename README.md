@@ -65,7 +65,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://storage.googleapis.com/portfolio-309012/xtickets-desktop.PNG)
 
 ### Built With
 
