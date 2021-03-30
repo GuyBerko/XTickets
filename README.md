@@ -26,8 +26,6 @@
     The application was built in a microservices design pattern.<br />
     The backend was written with Node.js and typescript and the client was written with React server side rendering.
     <br />
-    <a href="https://github.com/GuyBerko/xtickets"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="http://guy-berkovich.com">View Demo</a>
     ·
