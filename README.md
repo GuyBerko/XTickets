@@ -62,7 +62,7 @@
 
 ## Project Structure
 <ul>
-  <li>xt-client - React application</li>
+  <li>xt-client - React + Next.js application for ssr client</li>
   <li>xt-common - Npm library for common code implantation</li>
   <li>
     <span>Infrastructure</span>
