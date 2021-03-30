@@ -69,9 +69,14 @@
 
 ### Built With
 
-- []()
-- []()
-- []()
+- [https://github.com/nats-io/nats-streaming-server](Nats streaming server) - for the event bus implementation.
+- [https://github.com/OptimalBits/bull](Bull.js) - for job scheduler and event queue.
+- [https://www.npmjs.com/package/@google-cloud/storage](Google Cloud Storage) - for images bucket.
+- [https://nextjs.org/](Next.js) - for server side rendering client.
+- [https://www.mongodb.com/](Mongodb) - for services database.
+- [https://redis.io/](Redis) - for services databse.
+- [https://reactstrap.github.io/](Reactstrap) - for react bootstrap implementation.
+- [https://sendgrid.com/](Sendgrid) - for email server.
 
 <!-- GETTING STARTED -->
 
