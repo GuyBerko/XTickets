@@ -107,7 +107,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Guy Berkovich - [Email](mailofguy@gmail.com) - [LinkedIn](https://www.linkedin.com/in/guy-berkovich-8a4892123/)
+Guy Berkovich - <a href="mailto:mailofguy@gmail.com">Email</a> - [LinkedIn](https://www.linkedin.com/in/guy-berkovich-8a4892123/)
 
 Project Link: [Xtickets](https://github.com/GuyBerko/xtickets)
 
