@@ -145,13 +145,6 @@ Guy Berkovich - [mailofguy@gmail.com](mailofguy@gmail.com) - [https://www.linked
 
 Project Link: [https://github.com/GuyBerko/xtickets](https://github.com/GuyBerko/xtickets)
 
-<!-- ACKNOWLEDGEMENTS -->
-
-## Acknowledgements
-
-- []()
-- []()
-- []()
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
