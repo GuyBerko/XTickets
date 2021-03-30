@@ -150,14 +150,14 @@ Project Link: [https://github.com/GuyBerko/xtickets](https://github.com/GuyBerko
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/GuyBerko/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/GuyBerko/repo/graphs/contributors
+[contributors-url]: https://github.com/GuyBerko/xtickets/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/GuyBerko/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/GuyBerko/repo/network/members
+[forks-url]: https://github.com/GuyBerko/xtickets/network/members
 [stars-shield]: https://img.shields.io/github/stars/GuyBerko/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/GuyBerko/repo/stargazers
+[stars-url]: https://github.com/GuyBerko/xtickets/stargazers
 [issues-shield]: https://img.shields.io/github/issues/GuyBerko/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/GuyBerko/repo/issues
+[issues-url]: https://github.com/GuyBerko/xtickets/issues
 [license-shield]: https://img.shields.io/github/license/GuyBerko/repo.svg?style=for-the-badge
-[license-url]: https://github.com/GuyBerko/repo/blob/master/LICENSE.txt
+[license-url]: https://github.com/GuyBerko/xtickets/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/guy-berkovich-8a4892123/
