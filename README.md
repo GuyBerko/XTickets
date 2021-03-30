@@ -64,8 +64,8 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-<img src="https://storage.googleapis.com/portfolio-309012/xtickets-desktop.PNG" alt="project screen shot" />
-[!Xtickets ScreenShot](https://storage.googleapis.com/portfolio-309012/xtickets-desktop.PNG)
+<img src="https://storage.googleapis.com/portfolio-309012/xtickets-desktop2.PNG" alt="project screen shot" />
+[Xtickets ScreenShot](https://storage.googleapis.com/portfolio-309012/xtickets-desktop2.PNG)
 
 ### Built With
 
