@@ -22,10 +22,8 @@
   </a>
 
   <p align="center">
-    XTicket it's an application designated for buying and selling tickets.
-
-    The application was built in a microservices design pattern.
-
+    XTicket it's an application designated for buying and selling tickets.<br />
+    The application was built in a microservices design pattern.<br />
     The backend was written with Node.js and typescript and the client was written with React server side rendering.
     <br />
     <a href="https://github.com/GuyBerko/xtickets"><strong>Explore the docs »</strong></a>
