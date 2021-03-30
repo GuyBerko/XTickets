@@ -18,7 +18,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GuyBerko/xtickets">
-    <img src="https://storage.googleapis.com/xtickets/assets/logo-black.png" alt="Logo" width="80" height="80">
+    <img src="https://storage.googleapis.com/xtickets/assets/logo-black.png" alt="Logo">
   </a>
 
   <h3 align="center">XTickets</h3>
