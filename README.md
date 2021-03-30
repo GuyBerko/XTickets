@@ -168,4 +168,4 @@ Project Link: [https://github.com/GuyBerko/xtickets](https://github.com/GuyBerko
 [license-shield]: https://img.shields.io/github/license/GuyBerko/repo.svg?style=for-the-badge
 [license-url]: https://github.com/GuyBerko/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/GuyBerko
+[linkedin-url]: https://linkedin.com/in/guy-berkovich-8a4892123/
