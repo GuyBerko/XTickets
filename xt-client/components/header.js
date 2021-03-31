@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 import PreLoginNavbar from './pre-login-navbar';
 import PostLoginNavbar from './post-login-navbar';
