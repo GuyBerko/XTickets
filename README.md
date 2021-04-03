@@ -14,7 +14,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -28,7 +27,7 @@
     The backend was written with Node.js and typescript and the client was written with React server side rendering.
     <br />
     <br />
-    <a href="http://guy-berkovich.com">View Demo</a>
+    <a href="http://xtickets.guy-berkovich.com">View Demo</a>
     ·
     <a href="https://github.com/GuyBerko/xtickets/issues">Report Bug</a>
     ·
@@ -57,11 +56,13 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+
 <img src="https://storage.googleapis.com/portfolio-309012/xtickets-desktop2.PNG" alt="project screen shot" />
 
 <!-- PROJECT STRUCTURE -->
 
 ## Project Structure
+
 <ul>
   <li>xt-client - React + Next.js application for ssr client</li>
   <li>xt-common - Npm library for common code implantation</li>
@@ -97,7 +98,6 @@
 - [Reactstrap](https://reactstrap.github.io/) - for react bootstrap implementation.
 - [Sendgrid](https://sendgrid.com/) - for email server.
 
-
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -129,7 +129,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Guy Berkovich - <a href="mailto:mailofguy@gmail.com">Email</a> - [LinkedIn](https://www.linkedin.com/in/guy-berkovich-8a4892123/)
 
 Project Link: [Xtickets](https://github.com/GuyBerko/xtickets)
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
