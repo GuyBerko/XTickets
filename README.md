@@ -17,9 +17,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/GuyBerko/xtickets">
-    <img src="https://storage.googleapis.com/xtickets/assets/logo-black.png" alt="Logo">
-  </a>
 
   <p align="center">
     XTicket it's an application designated for buying and selling tickets.<br />
